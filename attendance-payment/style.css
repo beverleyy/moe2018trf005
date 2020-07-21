@@ -141,8 +141,24 @@ footer {
     text-align: center;
 }
 
+section, footer {
+    max-width: 960px;
+}
+
 @media screen and (max-width:540px){
     .input-wrapper {
-        max-width:100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (min-width:840px){
+    section, footer {
+        width: 70vw;
+    }
+}
+
+@media screen and (min-width:1440px){
+    section, footer {
+        width: 60vw;
     }
 }
