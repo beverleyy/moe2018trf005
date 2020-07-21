@@ -10,8 +10,8 @@ $(document).ready(function() {
 });
   
 function getData() {
-    var matric = document.getElementById("matric").value;
-    var sheetID = document.getElementById("key").value;
+    var matric = document.getElementById("matric").value.trim();
+    var sheetID = document.getElementById("key").value.trim();
     Papa.parse('https://docs.google.com/spreadsheets/d/' + sheetID + '/pub?output=csv', {
         download: true,
         header: true,
@@ -19,7 +19,7 @@ function getData() {
             var bool = 0;
             var data = results.data;
             for (var i = 0; i < data.length; i++) {
-                if (data[i]["Matriculation Number"].toLowerCase() == matric.toLowerCase()) {
+                if (data[i]["Matriculation Number"].trim().toLowerCase() == matric.toLowerCase()) {
                     generateData(data[i]);
                     bool = 1;
                     break;
