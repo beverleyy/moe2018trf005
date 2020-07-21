@@ -1,4 +1,8 @@
+/* Import font from Google */
+
 @import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,400;0,700;1,100;1,200;1,400;1,700&display=swap');
+
+/* Default styles */
 
 body {
     font-size: 1em;
@@ -30,6 +34,8 @@ a:hover {
     border-bottom-color: #c0ffee;
 }
 
+/* Headings/title */
+
 h1 {
     font-weight: 200;
     font-size: 1.5em;
@@ -44,6 +50,8 @@ h2,h3 {
     text-transform: uppercase;
 }
 
+/* Dividing lines */
+
 hr {
     background-image: linear-gradient(to right,
         rgba(192, 255, 238, 0),
@@ -56,9 +64,13 @@ hr {
     margin: 2em 0;
 }
 
+/* Hide the report div by default, Javascript will show it */
+
 #calculator {
     display: none;
 }
+
+/* Styling for each "box" */
 
 section {
     width: 90vw;
@@ -71,6 +83,8 @@ section {
     box-sizing: border-box;
 }
 
+/* Styling for the text fields */
+
 input {
     display: block;
     transition: 0.4s ease-in-out;
@@ -79,22 +93,6 @@ input {
     outline: none;
     box-sizing: content-box;
     color: #eaeaea;
-}
-
-input[type="submit"] {
-    border-radius: 0px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    background: #333;
-    padding: 10px 20px;
-    width: 110px;
-    font-size: 0.8em;
-}
-
-input[type="submit"]:hover {
-    box-shadow: inset 150px 0 0 #c0ffee;
-    color: #151515;
-    cursor: pointer;
 }
 
 label {
@@ -132,6 +130,26 @@ input[type="text"] {
     color: transparent;
 }
 
+/* Styling for submit button */
+
+input[type="submit"] {
+    border-radius: 0px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #333;
+    padding: 10px 20px;
+    width: 110px;
+    font-size: 0.8em;
+}
+
+input[type="submit"]:hover {
+    box-shadow: inset 150px 0 0 #c0ffee;
+    color: #151515;
+    cursor: pointer;
+}
+
+/* Styling for footer/copyright */
+
 footer {
     width: 90vw;
     margin: 30px auto 90px;
@@ -140,6 +158,8 @@ footer {
     text-transform: uppercase;
     text-align: center;
 }
+
+/* Additional code to accommodate different screen size */
 
 section, footer {
     max-width: 960px;
