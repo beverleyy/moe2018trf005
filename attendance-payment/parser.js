@@ -54,5 +54,6 @@ function generateData(info) {
     outDiv.innerHTML += "<br>Post-Test Writing: " + info["Post-W"];
     outDiv.innerHTML += "<br>Focus Group Discussion: " + info.FGD;
     outDiv.innerHTML += "</p>";
+    outDiv.innerHTML += "<p>(Y = attended, N = did not attend)</p>";
 }
   
