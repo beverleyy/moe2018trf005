@@ -27,7 +27,7 @@ function getData() {
             }
             if (bool == 0) {
                 var printDiv = document.getElementById("calculator");
-                printDiv.style.display = "block";
+                $(printDiv).fadeIn();
                 printDiv.innerHTML = "Error: Matric number not found. You are not a registered participant. Please try again or email <a href='mailto:MOE2018TRF005@gmail.com'>MOE2018TRF005@gmail.com</a>.";
             }
         } //end complete function
@@ -37,7 +37,6 @@ function getData() {
 function generateData(info) {
     var outDiv = document.getElementById("calculator");
     $(outDiv).fadeIn();
-
     outDiv.innerHTML = "<h2>Record for:</h2>"
     outDiv.innerHTML += "<p>" + info["Full Name"] + ", " + info["Matriculation Number"] + "</p>";
     outDiv.innerHTML += "<p><b>Total no. of lessons attended: " + info.Lessons + "</b></p>";
