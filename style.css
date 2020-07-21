@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,400;0,700;1,100;1,200;1,400;1,700&display=swap');
+
+body {
+    font-size: 1em;
+    line-height: 170%;
+    font-weight: 400;
+    word-wrap: break-word;
+    word-break: normal;
+    font-family: "Overpass", Helvetica, Arial, sans-serif;
+    background-color: #151515;
+    background-image: radial-gradient(220% 105% at top center, #363640 0%, #222 40%, #161616);
+    background-attachment: fixed;
+    color: #eaeaea;
+}
+
+b,strong {
+    font-weight: 700;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #eaeaea;
+    transition: 0.4s ease-in-out;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+  
+a:hover {
+    color: #c0ffee;
+    border-bottom-color: #c0ffee;
+}
+
+h1 {
+    font-weight: 200;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+h2,h3 {
+    font-weight: 200;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+hr {
+    background-image: linear-gradient(to right,
+        rgba(192, 255, 238, 0),
+        rgba(192, 255, 238, 1),
+        rgba(192, 255, 238, 0));
+    background-color: transparent;
+    border: 0px solid transparent;
+    width: 100%;
+    height: 1px;
+    margin: 2em 0;
+}
+
+#calculator {
+    display: none;
+}
+
+section {
+    width: 90vw;
+    margin: 60px auto;
+    background: #151515;
+    box-shadow: 40px 40px 80px #0e0e0e,
+        -40px -40px 80px #1c1c1c;
+    border-radius: 30px;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+input {
+    display: block;
+    transition: 0.4s ease-in-out;
+    font: 1em/170% "Overpass", Helvetica, Arial, sans-serif;
+    border: none;
+    outline: none;
+    box-sizing: content-box;
+    color: #eaeaea;
+}
+
+input[type="submit"] {
+    border-radius: 0px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: #333;
+    padding: 10px 20px;
+    width: 110px;
+    font-size: 0.8em;
+}
+
+input[type="submit"]:hover {
+    box-shadow: inset 150px 0 0 #c0ffee;
+    color: #151515;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 2em;
+    max-width:70%;
+}
+
+input[type="text"] {
+    width: 100%;
+    min-width: 100%;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    border-bottom: 3px solid #333333;
+}
+
+.input-highlight {
+    max-width: 100%;
+    border-top: 3px solid #c0ffee;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    position: absolute;
+    overflow: hidden;
+    color: transparent;
+}
+
+footer {
+    width: 90vw;
+    margin: 30px auto 90px;
+    font: 200 0.8em/170% "Overpass", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+@media screen and (max-width:540px){
+    .input-wrapper {
+        max-width:100%;
+    }
+}
