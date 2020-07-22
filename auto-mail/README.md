@@ -2,7 +2,7 @@
 
 Made with Python.
 
-###To run: 
+### To run: 
 
 `python3 automail_upd.py` (Bash or Command Prompt)
 
