@@ -14,6 +14,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 # Function to read comma-delimited name-email pairs
+# Change this function according to your template and address book file
 def user_emails(filename):
     names = []
     emails = []
@@ -46,26 +47,27 @@ def generate_message(filename):
 def main():
     
     # Setup Email
-    subject = input("Email subject:")
-    sender_email = input("Sender email address:")
-    sender_name = input("Sender's name:")
+    subject = input("Email subject: ")
+    sender_email = input("Sender email address: ")
+    sender_name = input("Sender's name: ")
     sender = sender_name+" <"+sender_email+">"
 
-    address_book = input("Contacts file:")
-    cc_list = input("CC list file:")
-    msg_temp = input("Message template file:")
+    address_book = input("Contacts file: ")
+    cc_list = input("CC list file: ")
+    msg_temp = input("Message template file: ")
 
     names, emails = user_emails(address_book) #read contacts from file
-    cc_dir, cc_emails, cc_str = cc_read(cc_list) #read cc list
-
-    names += cc_dir
-    emails += cc_emails
+    
+    if len(cc_list): # If cc list input given
+        cc_dir, cc_emails, cc_str = cc_read(cc_list) #read cc list
+        names += cc_dir
+        emails += cc_emails
     
     # Setup Templates
     html_template = generate_message(msg_temp)
 
     # Password...
-    password = input("Type your password and press enter:")
+    password = input("Type your password and press enter: ")
     
     # IMPORTANT NOTE ABOUT GMAIL SECURITY
     # When the program is run without the right security settings,
@@ -79,31 +81,34 @@ def main():
     context = ssl.create_default_context()
 
     # Get server details
-    smtp_h = input("SMTP server:")
-    smtp_p = input("SMTP port number:")
+    smtp_h = input("SMTP server: ")
+    smtp_p = input("SMTP port number: ")
     smtp_pn = int(smtp_p)
 
-    # Email server    
-    with smtplib.SMTP(smtp_h, smtp_pn) as server:
+    # Email server
+    with smtplib.SMTP_SSL(smtp_h, smtp_pn, context=context) as server:
         server.login(sender_email, password)
         
         # Loop thru all name-email pairs imported
         for name, receiver_email in zip(names, emails):
-
-            if receiver_email not in cc_emails:
+            
+            if (len(cc_list) and receiver_email in cc_emails):
+                receiver = "#NULL"
+                name = "#NULL"
+            else:
                 name = name.upper()
                 user = receiver_email.split("@")[0].upper()
                 dom = "@"+receiver_email.split("@")[1]
                 receiver = "#"+name+"# <"+(user+dom)+">"
-            else:
-                receiver = "#NULL"
-                name = "#NULL"
             
             # Setup multipart message (allow both plaintext and html)
             message = MIMEMultipart()
             message["From"] = sender
             message["To"] = receiver
-            message["CC"] = cc_str
+            
+            if len(cc_list): # If cc list input given
+                message["CC"] = cc_str
+                
             message["Subject"] = subject
 
             # Change html to text for plaintext
@@ -119,7 +124,7 @@ def main():
             # Attach file with name = filename
             filename = input("Attachment:")  # In same directory as script
 
-            if len(filename)==0: # If attachment input given
+            if len(filename): # If attachment input given
 
                 # Open PDF file in binary mode
                 with open(filename, "rb") as attachment:
