@@ -10,10 +10,18 @@ Developed using Visual Studio Code and optimized for Safari, Chrome and Firefox.
 
 ### Dependencies
 
-* [jQuery](http://jquery.com)
 * [PapaParse](http://www.papaparse.com)
 * Overpass font - [Google Fonts](http://fonts.google.com/specimen/Overpass)
 
 ### Instructions
 
 Google sheet must be published as a .csv and share settings changed to "Anyone with the link can view" in order to not trigger any security warnings
+
+### Changelog
+
+**29/07/2020:**
+
+* Updated report generation code.
+* Now displays breakdown of total number.
+* Removed jQuery library and dependency.
+* Tweaked UI for consistency.

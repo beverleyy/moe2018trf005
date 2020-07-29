@@ -15,13 +15,6 @@
 
         <!-- CSS styles -->
         <link rel="stylesheet" href="style.css"/>
-
-        <!-- Javascript (dependencies) -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script> 
-
-        <!-- Javascript (magic) -->
-        <script src="parser.js"></script>
     </head>
     <body>
         <!-- Main content -->
@@ -30,29 +23,27 @@
                 <h1>
                     MOE-TRF Study - Payment Calculator
                 </h1>
+                <hr>
                 <h2>
                     Payment rates
                 </h2>
                 <p>
                     <b>Lessons:</b> $20 each<br>
-                    <b>Pre-test:</b> $10 each = $20<br>
-                    <b>Post-test:</b> $14 each = $28<br>
+                    <b>Pre-test:</b> $10 each<br>
+                    <b>Post-test:</b> $14 each<br>
                     <b>Focus group discussion:</b> $20
                 </p>
             </section>
             <section id="form">
                 <h2>Check your payment amount with your matric number:</h2>
-                <p>If there is any discrepancy:<br>Please email <a href="mailto:MOE2018TRF005@gmail.com">MOE2018TRF005@gmail.com</a></p>
                 <form action="javascript:getData();" id="input">
                     <div class="input-wrapper">
                         <label for="matric">Matric number:</label>
                         <input type="text" placeholder='' value='' class="bar" name="matric" id="matric"/>
-                        <span class='input-highlight'></span>
                     </div>
                     <div class="input-wrapper">
                         <label for="key">Key:</label>
                         <input type="text" placeholder='' value='' class="bar" name="key" id="key"/>
-                        <span class='input-highlight'></span>
                     </div>
                     <!-- Submit button -->
                     <input type="submit" value="Submit">
@@ -66,5 +57,12 @@
           <footer>
               &copy; 2020 Beverley Yeo & MOE2018TRF005
           </footer>
+
+          <!-- Javascript (dependencies) -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script> 
+  
+          <!-- Javascript (magic) -->
+          <script src="parser.js"></script>
+          <script src="form.js"></script>
     </body>
 </html> 

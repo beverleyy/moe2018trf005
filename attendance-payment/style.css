@@ -1,6 +1,6 @@
 /* Import font from Google */
 
-@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,400;0,700;1,100;1,200;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap');
 
 /* Default styles */
 
@@ -12,7 +12,7 @@ body {
     word-break: normal;
     font-family: "Overpass", Helvetica, Arial, sans-serif;
     background-color: #151515;
-    background-image: radial-gradient(220% 105% at top center, #363640 0%, #222 40%, #161616);
+    background-image: radial-gradient(220% 105% at top center, #363640 0%, #222 40%, #0e0e0e);
     background-attachment: fixed;
     color: #eaeaea;
 }
@@ -43,7 +43,14 @@ h1 {
     text-transform: uppercase;
 }
 
-h2,h3 {
+h2 {
+    font-weight: 200;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+h3 {
     font-weight: 200;
     font-size: 1em;
     letter-spacing: 0.1em;
@@ -76,9 +83,12 @@ section {
     width: 90vw;
     margin: 60px auto;
     background: #151515;
-    box-shadow: 30px 30px 75px #0e0e0e, 
-        -30px -30px 75px #1c1c1c;
-    border-radius: 10px;
+    background-image: radial-gradient(220% 105% at top center, #363640 0%, #222 40%, #0e0e0e);
+    background-attachment: fixed;
+    box-shadow: 
+        15px 15px 50px rgba(0,0,0,0.6), 
+        -15px -15px 50px rgba(128,128,128,0.15);
+    border-radius: 15px;
     padding: 50px;
     box-sizing: border-box;
 }
@@ -86,17 +96,36 @@ section {
 /* Styling for the text fields */
 
 #input {
-    margin:1.5em 0 1em;
+    margin:2em 0 1em;
 }
 
 input {
     display: block;
     transition: 0.4s ease-in-out;
-    font: 1em/170% "Overpass", Helvetica, Arial, sans-serif;
+    font: 1em/3em "Overpass", Helvetica, Arial, sans-serif;
     border: none;
     outline: none;
     box-sizing: content-box;
     color: #eaeaea;
+	position: relative;
+	height: 3em;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 2.5em;
+    max-width: 60%;
+}
+
+input[type="text"] {
+	z-index: 10;
+    width: 100%;
+    min-width: 100%;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+	height: 4em;
+	line-height: 4em;
 }
 
 label {
@@ -105,50 +134,87 @@ label {
     font-size: 0.8em;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+	text-align: left;
+	line-height: 1em;
 }
 
-.input-wrapper {
-    position: relative;
-    margin-bottom: 2em;
-    max-width:60%;
+label::before {
+	content: "";
+	position: absolute;
+	top: 2em;
+	left: 0;
+	width: 100%;
+	height: calc(100% - 2em);
+    background: #151515;
+    background-image: radial-gradient(220% 105% at top center, #363640 0%, #222 40%, #0e0e0e);
+    background-attachment: fixed;
+    box-shadow: 
+        inset 5px 5px 15px rgba(0,0,0,0.6), 
+        inset -5px -5px 15px rgba(128,128,128,0.15);
+	-webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
+	transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
+	-webkit-transform-origin: 50% 100%;
+	transform-origin: 50% 100%;
+	-webkit-transition: -webkit-transform 0.4s;
+	transition: transform 0.4s;
+	border-radius: 5px;
 }
 
-input[type="text"] {
-    width: 100%;
-    min-width: 100%;
-    padding: 0;
-    border-radius: 0;
-    background-color: transparent;
-    border-bottom: 1px solid #333333;
+.input-filled label::before {
+	-webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+	transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
 }
 
-.input-highlight {
-    max-width: 100%;
-    border-top: 1px solid #c0ffee;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 0;
-    position: absolute;
-    overflow: hidden;
-    color: transparent;
+label::after {
+	content: '';
+	position: absolute;
+	bottom: -0.25em;
+	left: 0;
+	width: 100%;
+	height: 0.25em;
+    box-shadow: 
+        1px 1px 5px rgba(0,0,0,1), 
+        -1px -1px 5px rgba(128,128,128,0.5);
+	-webkit-transform-origin: 50% 0%;
+	transform-origin: 50% 0%;-webkit-transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
+	transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
+	-webkit-transition: -webkit-transform 0.4s;
+	transition: transform 0.4s;
+}
+
+.input-filled label::after {
+	-webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
+	transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
 }
 
 /* Styling for submit button */
 
 input[type="submit"] {
-    border-radius: 0px;
+    -webkit-appearance: none;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    background: #333;
+    background: #151515;
+    background-image: radial-gradient(220% 105% at top center, #363640 0%, #222 40%, #0e0e0e);
+    background-attachment: fixed;
+    box-shadow: 
+        5px 5px 15px rgba(0,0,0,0.6), 
+        -5px -5px 15px rgba(128,128,128,0.15),
+		inset 5px 5px 15px rgba(0,0,0,0),
+		inset -5px -5px 15px rgba(128,128,128,0);
     padding: 10px 20px;
     width: 110px;
     font-size: 0.8em;
+    border-radius: 5px;
+	transition: 0.2s ease-in-out;
 }
 
 input[type="submit"]:hover {
-    box-shadow: inset 150px 0 0 #c0ffee;
-    color: #151515;
+    box-shadow: 
+		5px 5px 15px rgba(0,0,0,0),
+		-5px -5px 15px rgba(128,128,128,0),
+        inset 5px 5px 15px rgba(0,0,0,0.6), 
+        inset -5px -5px 15px rgba(128,128,128,0.15);
+    color: #c0ffee;
     cursor: pointer;
 }
 
