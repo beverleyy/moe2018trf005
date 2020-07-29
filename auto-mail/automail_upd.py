@@ -9,32 +9,30 @@ from string import Template
 
 # Setup the email format
 from email import encoders
+from email.utils import formatdate
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-# Function to read comma-delimited name-email pairs
-# Change this function according to your template and address book file
+# Function to read comma-delimited email-name pairs
 def user_emails(filename):
     names = []
     emails = []
     with open(filename, mode='r', encoding='utf-8') as contacts_file:
         for a_contact in contacts_file:
-            names.append(a_contact.split(",")[0])
-            emails.append((a_contact.split(",")[1]).rstrip("\n"))
+            emails.append(a_contact.split(",")[0])
+            names.append((a_contact.split(",")[1]).rstrip("\n"))
     return names, emails
 
-# Function to read the CC line text file
+# Function to read the CC line text file (comma-delimited email-name pairs)
 def cc_read(filename):
     cc_names = []
     cc_emails = []
-    cc_line = []
     with open(filename,mode="r",encoding="utf-8") as address_file:
         for c_contact in address_file:
-            cc_names.append(c_contact.split("<")[0])
-            cc_emails.append((c_contact.split("<")[1]).split(">")[0])
-            cc_line.append(c_contact.rstrip("\n"))
-    cc_str = ", ".join(cc_line)
+            cc_emails.append(c_contact.split(",")[0])
+            cc_names.append((c_contact.split(",")[1]).rstrip("\n"))
+    cc_str = ", ".join(cc_emails)
     return cc_names, cc_emails, cc_str
 
 # Function to generate template from text file and replace blanks
@@ -55,19 +53,19 @@ def main():
     address_book = input("Contacts file: ")
     cc_list = input("CC list file: ")
     msg_temp = input("Message template file: ")
+    filename = input("Attachment: ")  # In same directory as script
 
     names, emails = user_emails(address_book) #read contacts from file
-    
-    if len(cc_list): # If cc list input given
-        cc_dir, cc_emails, cc_str = cc_read(cc_list) #read cc list
-        names += cc_dir
-        emails += cc_emails
+    cc_dir, cc_emails, cc_str = cc_read(cc_list) #read cc list
+
+    names += cc_dir
+    emails += cc_emails
     
     # Setup Templates
     html_template = generate_message(msg_temp)
 
     # Password...
-    password = input("Type your password and press enter: ")
+    password = input("Password: ")
     
     # IMPORTANT NOTE ABOUT GMAIL SECURITY
     # When the program is run without the right security settings,
@@ -85,31 +83,29 @@ def main():
     smtp_p = input("SMTP port number: ")
     smtp_pn = int(smtp_p)
 
-    # Email server
+    # Email server    
     with smtplib.SMTP_SSL(smtp_h, smtp_pn, context=context) as server:
         server.login(sender_email, password)
         
         # Loop thru all name-email pairs imported
         for name, receiver_email in zip(names, emails):
-            
-            if (len(cc_list) and receiver_email in cc_emails):
-                receiver = "#NULL"
-                name = "#NULL"
-            else:
+
+            if receiver_email not in cc_emails:
                 name = name.upper()
                 user = receiver_email.split("@")[0].upper()
                 dom = "@"+receiver_email.split("@")[1]
                 receiver = "#"+name+"# <"+(user+dom)+">"
+            else:
+                receiver = "#NULL"
+                name = "#NULL"
             
             # Setup multipart message (allow both plaintext and html)
             message = MIMEMultipart()
             message["From"] = sender
             message["To"] = receiver
-            
-            if len(cc_list): # If cc list input given
-                message["CC"] = cc_str
-                
+            message["CC"] = cc_str
             message["Subject"] = subject
+            message["Date"] = formatdate(localtime=True)
 
             # Change html to text for plaintext
             html = html_template.substitute(PERSON_NAME=name.title())
@@ -122,8 +118,6 @@ def main():
             message.attach(part2)
 
             # Attach file with name = filename
-            filename = input("Attachment:")  # In same directory as script
-
             if len(filename): # If attachment input given
 
                 # Open PDF file in binary mode
