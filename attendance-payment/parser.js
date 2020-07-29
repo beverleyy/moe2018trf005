@@ -53,6 +53,10 @@ function generateData(info){
     outDiv.innerHTML = "<h2>Record for:</h2>"
     outDiv.innerHTML += "<p>" + info["Full Name"] + ", " + info["Matriculation Number"] + "</p>";
     outDiv.innerHTML += "<p><b>Total no. of lessons attended: " + info.Lessons + "</b></p>";
+    if(info.EXTRA) 
+        outDiv.innerHTML += "<p><b>Extra payment (see remarks): " + info.EXTRA + "</b></p>";
+    if(info.Remarks)
+        outDiv.innerHTML += "<p><b>Remarks:</b><br> + info.Remarks + "</p>";
     outDiv.innerHTML += "<p><b>Total payment due: $" + info.TOTAL + "</b></p>";
     outDiv.innerHTML += "<hr><h3>Detailed attendance:</h3>";
     outDiv.innerHTML += "Pre-Test Speaking: " + info["Pre-S"];
