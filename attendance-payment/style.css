@@ -152,8 +152,8 @@ label {
     background-image: radial-gradient(220% 105% at top center, #363640 0%, #272727 40%, #0e0e0e);
     background-attachment: fixed;
     box-shadow: 
-        inset 5px 5px 15px rgba(0,0,0,0.45), 
-        inset -5px -5px 15px rgba(128,128,128,0.15);
+        inset 5px 5px 15px rgba(0,0,0,0.6), 
+        inset -5px -5px 15px rgba(128,128,128,0.2);
     -webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
     transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
     -webkit-transform-origin: 50% 100%;
