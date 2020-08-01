@@ -21,7 +21,8 @@ function getData(){
     var matric = document.getElementById("matric").value.trim();
     var sheetID = document.getElementById("key").value.trim();
     // Call Papa Parse on the Google spreadsheet
-    Papa.parse('https://docs.google.com/spreadsheets/d/' + sheetID + '/pub?output=csv', {
+    // The additional heroku in front is a special server to bypass CORS
+    Papa.parse('https://moe2018trf005cors.herokuapp.com/https://docs.google.com/spreadsheets/d/' + sheetID + '/pub?output=csv', {
         download: true, //this needs to be true for spreadsheet URL
         header: true, //this needs to be true to sort the data later
         complete: function(results){ //When parsing done:
@@ -53,7 +54,8 @@ function generateData(info){
     var outDiv = document.getElementById("calculator");
     outDiv.innerHTML = "<h2>Record for:</h2>"
     outDiv.innerHTML += "<h3>" + info["Full Name"] + ", " + info["Matriculation Number"] + "</h3>";
-    outDiv.innerHTML += "<h3>Total payment due: <b>$" + info.TOTAL + "</b></h3><hr>";
+    outDiv.innerHTML += "<h3>Total payment due: <b>$" + info.TOTAL + "</b></h3>";
+    outDiv.innerHTML += "<p>Please submit your payment claim form by <b>28 August 2020</b>.</p><hr>";
     outDiv.innerHTML += "<p><b>Pre-tests attended:</b> " + info.PreTests + " &times; $10 = $"+(parseInt(info.PreTests)*10)+"</p>";
     outDiv.innerHTML += "<p><b>Post-tests attended:</b> " + info.PostTests + " &times; $14 = $"+(parseInt(info.PostTests)*14)+"</p>";
     outDiv.innerHTML += "<p><b>Total no. of lessons attended:</b> " + info.Lessons + " &times; $20 = $"+(parseInt(info.Lessons)*20)+"</p>";
