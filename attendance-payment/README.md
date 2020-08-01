@@ -11,13 +11,20 @@ Developed using Visual Studio Code and optimized for Safari, Chrome and Firefox.
 ### Dependencies
 
 * [PapaParse](http://www.papaparse.com)
+* [CORS Anywhere](https://github.com/Rob--W/cors-anywhere/)
 * Overpass font - [Google Fonts](http://fonts.google.com/specimen/Overpass)
 
 ### Instructions
 
-Google sheet must be published as a .csv and share settings changed to "Anyone with the link can view" in order to not trigger any security warnings
+Google sheet must be published as a .csv and share settings changed to "Anyone with the link can view". 
+
+CORS Anywhere proxy server must be set up to bypass Google's CORS policy. For this app, I've set one up on [Heroku](https://www.heroku.com/) specifically for this calculator (only allows requests from my Github pages domain).
 
 ### Changelog
+
+**01/08/2020:**
+
+* Fixed CORS policy no access-control-allow-origin error (see instructions)
 
 **29/07/2020:**
 
