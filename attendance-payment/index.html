@@ -49,21 +49,29 @@
                     <!-- Submit button -->
                     <input type="submit" value="Submit">
                 </form> 
-          </section>
-          <!-- Third box is empty by default. Populate with Javascript -->
-          <section id="calculator"></section>
-          </main>
-          <!-- end main content -->
-          <!-- Footer - copyright info -->
-          <footer>
-              &copy; 2020 Beverley Yeo & MOE2018TRF005
-          </footer>
+            </section>
+            <!-- Output is empty by default. Populate with Javascript -->
+            <section id="calculator">
+                <div class="swing" aria-busy="true" aria-label="Loading" role="progressbar">
+                    <div class="swing-l"></div>
+                    <div></div>
+                    <div></div>
+                    <div class="swing-r"></div>
+                </div>
+                <div id="output"></div>
+            </section>
+        </main>
+        <!-- end main content -->
+        <!-- Footer - copyright info -->
+        <footer>
+            &copy; 2020 Beverley Yeo & MOE2018TRF005
+        </footer>
 
-          <!-- Javascript (dependencies) -->
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script> 
+        <!-- Javascript (dependencies) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script> 
   
-          <!-- Javascript (magic) -->
-          <script src="parser.js"></script>
-          <script src="form.js"></script>
+        <!-- Javascript (magic) -->
+        <script src="parser.js"></script>
+        <script src="form.js"></script>
     </body>
 </html>

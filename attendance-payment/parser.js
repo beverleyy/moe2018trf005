@@ -4,7 +4,7 @@
 function fadein(el, display) {
     if (display != "block")
         el.style.opacity = 0;
-    el.style.display = display || "block";
+    el.style.display = "block";
     (function fade() {
         var val = parseFloat(el.style.opacity);
         if (!((val += 0.1) > 1)) {
@@ -20,6 +20,13 @@ function getData(){
     // Retrieve data from user inputs, trim off whitespace
     var matric = document.getElementById("matric").value.trim();
     var sheetID = document.getElementById("key").value.trim();
+    var printDiv = document.getElementById("calculator");
+    var outDiv = document.getElementById("output");
+    var loader = document.getElementsByClassName("swing")[0];
+    fadein(printDiv,printDiv.style.display);
+    fadein(loader,loader.style.display);
+    outDiv.style.display = "none";
+
     // Call Papa Parse on the Google spreadsheet
     // The additional heroku in front is a special server to bypass CORS
     Papa.parse('https://moe2018trf005cors.herokuapp.com/https://docs.google.com/spreadsheets/d/' + sheetID + '/pub?output=csv', {
@@ -38,9 +45,9 @@ function getData(){
             }//end for
             //Error message, if matric number returns no matches
             if (bool == 0) {
-                var printDiv = document.getElementById("calculator");
-                printDiv.innerHTML = "Error: Matric number not found. You are not a registered participant. Please try again or email <a href='mailto:MOE2018TRF005@gmail.com'>MOE2018TRF005@gmail.com</a>.";
-                fadein(printDiv,printDiv.style.display);
+                outDiv.innerHTML = "Error: Matric number not found. You are not a registered participant. Please try again or email <a href='mailto:MOE2018TRF005@gmail.com'>MOE2018TRF005@gmail.com</a>.";
+                document.getElementsByClassName("swing")[0].style.display = "none";
+                fadein(outDiv,outDiv.style.display);
             }
         } //end complete function
     }); //end Parse
@@ -51,7 +58,7 @@ function getData(){
 // Probably not the best way to populate the report 
 // but uh..... I was given an hour to write this whole program
 function generateData(info){
-    var outDiv = document.getElementById("calculator");
+    var outDiv = document.getElementById("output");
     outDiv.innerHTML = "<h2>Record for:</h2>"
     outDiv.innerHTML += "<h3>" + info["Full Name"] + ", " + info["Matriculation Number"] + "</h3>";
     outDiv.innerHTML += "<h3>Total payment due: <b>$" + info.TOTAL + "</b></h3>";
@@ -81,5 +88,6 @@ function generateData(info){
     outDiv.innerHTML += "</p>";
     outDiv.innerHTML += "<p>(Y = attended, N = did not attend, N/A = not eligible)</p><hr>";
     outDiv.innerHTML += "<p>If there is any discrepancy, please email <a href='mailto:MOE2018TRF005@gmail.com'>MOE2018TRF005@gmail.com</a>.";
+    document.getElementsByClassName("swing")[0].style.display = "none";
     fadein(outDiv,outDiv.style.display);
 }

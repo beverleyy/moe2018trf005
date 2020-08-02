@@ -71,10 +71,80 @@ hr {
     margin: 2em 0;
 }
 
-/* Hide the report div by default, Javascript will show it */
+/* Loading */
 
-#calculator {
-    display: none;
+/* Hide reports by default */
+#calculator,#output {display: none;}
+
+.swing {
+    width: 4em;
+    margin: 0 auto;
+}
+
+.swing div {
+    border-radius: 50%;
+    float: left;
+    height: 1em;
+    width: 1em;
+    background: #c0ffee;
+    box-sizing: border-box;
+    border: 3px solid #272727;
+}
+
+@-webkit-keyframes ball-l {
+    0%,
+    50% {
+        -webkit-transform: rotate(0) translateX(0);
+        transform: rotate(0) translateX(0);
+    }
+    100% {
+        -webkit-transform: rotate(50deg) translateX(-2.5em);
+        transform: rotate(50deg) translateX(-2.5em);
+    }
+}
+
+@keyframes ball-l {
+    0%,
+    50% {
+        -webkit-transform: rotate(0) translate(0);
+        transform: rotate(0) translateX(0);
+    }
+    100% {
+        -webkit-transform: rotate(50deg) translateX(-2.5em);
+        transform: rotate(50deg) translateX(-2.5em);
+    }
+}
+
+@-webkit-keyframes ball-r {
+    0% {
+        -webkit-transform: rotate(-50deg) translateX(2.5em);
+        transform: rotate(-50deg) translateX(2.5em);
+    }
+    50%,
+    100% {
+        -webkit-transform: rotate(0) translateX(0);
+        transform: rotate(0) translateX(0);
+    }
+}
+
+@keyframes ball-r {
+    0% {
+        -webkit-transform: rotate(-50deg) translateX(2.5em);
+        transform: rotate(-50deg) translateX(2.5em);
+    }
+    50%,
+    100% {
+        -webkit-transform: rotate(0) translateX(0);
+        transform: rotate(0) translateX(0);
+    }
+}
+.swing-l {
+    -webkit-animation: ball-l 0.425s ease-in-out infinite alternate;
+    animation: ball-l 0.425s ease-in-out infinite alternate;
+}
+.swing-r {
+    -webkit-animation: ball-r 0.425s ease-in-out infinite alternate;
+    animation: ball-r 0.425s ease-in-out infinite alternate;
 }
 
 /* Styling for each "box" */
@@ -116,11 +186,11 @@ input {
     position: relative;
     margin-bottom: 2em;
     max-width: 60%;
-	padding: 1em 0;
+    padding: 1em 0;
 }
 
 input[type="text"] {
-	z-index: 10;
+    z-index: 10;
     width: 100%;
     min-width: 100%;
     padding: 0;
@@ -128,8 +198,8 @@ input[type="text"] {
     background-color: transparent;
     height: 2em;
     line-height: 2em;
-	padding: 0em 2em;
-	box-sizing: border-box;
+    padding: 0em 2em;
+    box-sizing: border-box;
 }
 
 label {
