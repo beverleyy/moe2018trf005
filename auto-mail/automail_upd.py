@@ -56,13 +56,14 @@ def main():
     filename = input("Attachment: ")  # In same directory as script
 
     names, emails = user_emails(address_book) #read contacts from file
-    cc_dir, cc_emails, cc_str = cc_read(cc_list) #read cc list
 
-    names += cc_dir
-    emails += cc_emails
+    if (len(cc_list)):
+        cc_dir, cc_emails, cc_str = cc_read(cc_list) #read cc list
+        names += cc_dir
+        emails += cc_emails
     
     # Setup Templates
-    html_template = generate_message(msg_temp)
+    text_template = generate_message(msg_temp)
 
     # Password...
     password = input("Password: ")
@@ -90,29 +91,32 @@ def main():
         # Loop thru all name-email pairs imported
         for name, receiver_email in zip(names, emails):
 
-            if receiver_email not in cc_emails:
+            if (len(cc_list) and receiver_email in cc_emails):
+                receiver = "#NULL"
+                name = "#NULL"
+            else:
                 name = name.upper()
                 user = receiver_email.split("@")[0].upper()
                 dom = "@"+receiver_email.split("@")[1]
                 receiver = "#"+name+"# <"+(user+dom)+">"
-            else:
-                receiver = "#NULL"
-                name = "#NULL"
             
             # Setup multipart message (allow both plaintext and html)
             message = MIMEMultipart()
             message["From"] = sender
             message["To"] = receiver
-            message["CC"] = cc_str
+            
+            if len(cc_list):
+                message["CC"] = cc_str
+                
             message["Subject"] = subject
             message["Date"] = formatdate(localtime=True)
 
             # Change html to text for plaintext
-            html = html_template.substitute(PERSON_NAME=name.title())
+            text = text_template.substitute(PERSON_NAME=name.title())
 
             # Convert to plain/html MIMEText
             # Change html to text for plaintext
-            part2 = MIMEText(html, "html")
+            part2 = MIMEText(text, "html")
 
             # Add message parts to MIMEMultipart message
             message.attach(part2)
