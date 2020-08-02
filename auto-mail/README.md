@@ -2,6 +2,8 @@
 
 Made with Python.
 
+I learnt about this trick from my Spacecraft Design TA at Purdue, so when my PI said she wanted personalized emails for each participant, I thought writing a Python script to do it made more sense than fiddling around on Outlook.
+
 With a given **HTML template** and 1 blank for the person's name, replace all instances of `${PERSON_NAME}` with a value taken from a comma-delimited list.
 
 For example, with a comma-delimited address file reading:
@@ -16,8 +18,16 @@ To use a plain-text template instead of a HTML template, `Ctrl+F` (or `Cmd+F` if
 
 `python3 automail_upd.py` (Bash or Command Prompt)
 
+### Multiple fields in template:
+
+See `automail_multi.py` for an example. 
+
 ### Security: 
 
 Turn on "less secure apps" in your account/security settings if using Gmail. 
 
 No passwords, login details or email contents are stored in this program.
+
+### To-do:
+
+One day in the distant future, I will make this code into an actual program and not just a script.
