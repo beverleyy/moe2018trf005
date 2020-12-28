@@ -22,6 +22,8 @@ body {
     margin: 0;
     padding: 20px;
     color: #514e47;
+    overflow-x: hidden;
+    word-wrap: break-word;
 }
 
 b, bold, strong {
@@ -50,11 +52,13 @@ a:hover {
 h1 {
     font-size: 2em;
     font-weight: 900;
+    line-height: 1em;
 }
 
 h2 {
     font-size: 1.5em;
     font-weight: 900;
+    line-height: 1em;
 }
 
 h3 {
@@ -87,7 +91,7 @@ hr {
 #information {
     background: #ffffff;
     width: calc(100% - 120px);
-    margin: 40px 20px -20px;
+    margin: 0px 20px -20px;
     padding: 40px;
 }
 
@@ -146,6 +150,16 @@ input {
     outline: none!important;
     width: 100%;
     box-sizing: border-box;
+    transition: 0.4s ease-in-out;
+}
+
+input:not(#submit) {
+    box-shadow: 0 3px 0 transparent;
+}
+
+input:not(#submit):hover, input:not(#submit):focus {
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 3px 0 rgba(255,255,255,0.1);
 }
 
 input::-moz-focus-inner { 
@@ -154,15 +168,21 @@ input::-moz-focus-inner {
 
 #submit {
     color: #d2cfc8;
-    margin-top: 40px;
-    transition: color 300ms;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     font-weight: 300;
+    height: 50px;
+    line-height: 50px;
+    margin: 30px 5px 0 5px;
+    width: calc(100% - 10px);
+    border-radius: 50px;
+    border: 1px solid transparent;
 }
 
 #submit:hover {
     color: #ae967c;
+    font-weight: 500;
+    border: 1px solid #ae967c;
 }
 
 .form svg {
@@ -185,7 +205,7 @@ input::-moz-focus-inner {
 #calculator {
     background: #ffffff;
     width: calc(100% - 120px);
-    margin: -20px 20px 40px;
+    margin: -20px 20px 0px;
     padding: 40px;
 }
 
@@ -286,5 +306,35 @@ input::-moz-focus-inner {
     #information, #calculator {
         width: calc(100% - 40px);
         padding: 20px 0px;
+    }
+}
+
+@media screen and (max-width:420px){
+    body {
+        padding: 0px;
+    }
+
+    .page {
+        width: 100%;
+        min-height: 100%;
+        border-bottom: 0px solid transparent;
+    }
+
+    .container {
+        width: 100vw;
+        max-width: 100vw;
+        margin: 20px auto;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    h3 {
+        font-size: 1.1em;
     }
 }
