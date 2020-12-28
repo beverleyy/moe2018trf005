@@ -33,7 +33,7 @@ function getData(){
 
     // Call Papa Parse on the Google spreadsheet
     // The additional heroku in front is a special server to bypass CORS
-    Papa.parse('https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/' + sheetID + '/pub?output=csv', {
+    Papa.parse('https://moe2018trf005cors.herokuapp.com/https://docs.google.com/spreadsheets/d/' + sheetID + '/pub?output=csv', {
         download: true, //this needs to be true for spreadsheet URL
         header: true, //this needs to be true to sort the data later
         error: function(){ //if parsing failed
