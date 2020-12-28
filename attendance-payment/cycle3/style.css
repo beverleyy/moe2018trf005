@@ -103,6 +103,14 @@ hr {
     margin: 20px 40px 30px;
 }
 
+#information h3 {
+    margin: 60px 20px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
+
 .rate {
     font-size: 1em;
     line-height: 1.5;
@@ -157,9 +165,9 @@ input:not(#submit) {
     box-shadow: 0 3px 0 transparent;
 }
 
-input:not(#submit):hover, input:not(#submit):focus {
-    background: rgba(255,255,255,0.1);
-    box-shadow: 0 3px 0 rgba(255,255,255,0.1);
+input:not(#submit):hover {
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 3px 0 rgba(255,255,255,0.05);
 }
 
 input::-moz-focus-inner { 
