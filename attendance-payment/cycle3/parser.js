@@ -33,7 +33,7 @@ function getData(){
 
     // Call Papa Parse on the Google spreadsheet
     // The additional heroku in front is a special server to bypass CORS
-    Papa.parse('https://moe2018trf005cors.herokuapp.com/https://docs.google.com/spreadsheets/d/' + sheetID + '/pub?output=csv', {
+    Papa.parse('https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/' + sheetID + '/pub?output=csv', {
         download: true, //this needs to be true for spreadsheet URL
         header: true, //this needs to be true to sort the data later
         error: function(){ //if parsing failed
@@ -68,9 +68,14 @@ function errFunc(errMsg,outDiv,loader){
 }
   
 /* Function to print out student data */
-// Takes 1 argument, the data output by the parser
 // Probably not the best way to populate the report 
-// but uh..... I was given an hour to write this whole program
+// But brute-forced because I didn't have time to write a proper one
+
+// Takes 3 arguments:
+// 1. Parser data output
+// 2. Report element
+// 3. Loader element (so it can be hidden)
+
 function generateData(info,outDiv,loader){
     outDiv.innerHTML = "<h2>Record for:</h2>"
     outDiv.innerHTML += "<h3>" + info["Full Name"] + ", " + info["Matriculation Number"] + "</h3>";

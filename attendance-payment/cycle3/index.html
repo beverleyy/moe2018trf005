@@ -15,63 +15,73 @@
 
         <!-- CSS styles -->
         <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css"/>
-        <link rel="stylesheet" href="../style.css"/>
+        <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-        <!-- Main content -->
-        <main>
-            <section id="information">
-                <h1>
-                    MOE-TRF Study - Payment Calculator
-                </h1>
-                <hr>
-                <h2>
-                    Payment rates (Cycle 3)
-                </h2>
-                <p>
-                    <b>Lessons:</b> $16 each<br>
-                    <b>Pre-test:</b> $10 each<br>
-                    <b>Post-test:</b> $14 each<br>
-                    <b>Focus group discussion:</b> $20
-                </p>
-            </section>
-            <section id="form">
-                <h2>Check your payment amount with your matric number:</h2>
-                <form action="javascript:getData();" id="input">
-                    <label for="matric">Matric number:</label>
-                    <div class="input-wrapper">
-                        <input type="text" placeholder='' value='' class="bar" name="matric" id="matric"/>
+        
+        <main class="page">
+            <div class="container">
+                <section id="information">
+                    <h1>MOE-TRF Study</h1>
+                    <h2>Payment Calculator (Cycle 3)</h2>
+                    <div class="rate">
+                        <p>
+                            <b>Lessons:</b> $16 each<br>
+                            <b>Pre-test:</b> $10 each<br>
+                            <b>Post-test:</b> $14 each<br>
+                            <b>Focus group discussion:</b> $20
+                        </p>
                     </div>
-                    <label for="key">Key:</label>
-                    <div class="input-wrapper">
-                        <input type="text" placeholder='' value='' class="bar" name="key" id="key"/>
+                </section>
+                <section id="form">
+                    <form class="form" action="javascript:getData();" id="input">
+                        <label for="matric">Matric number</label>
+                        <input type="text" placeholder='' value=''name="matric" id="matric"/>
+                        <label for="key">Key</label>
+                        <input type="text" placeholder='' value=''name="key" id="key"/>
+                        <input type="submit" id="submit" value="Submit">
+                        <svg viewBox="0 0 320 300">
+                            <defs>
+                                <linearGradient
+                                            inkscape:collect="always"
+                                            id="linearGradient"
+                                            x1="13"
+                                            y1="193.49992"
+                                            x2="307"
+                                            y2="193.49992"
+                                            gradientUnits="userSpaceOnUse">
+                                    <stop
+                                        style="stop-color:#ae967c;"
+                                        offset="0"
+                                        id="stop876" />
+                                    <stop
+                                        style="stop-color:#a09986;"
+                                        offset="1"
+                                        id="stop878" />
+                                </linearGradient>
+                            </defs>
+                            <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
+                        </svg>
+                    </form>
+                </section>
+                <section id="calculator">
+                    <div class="swing" aria-busy="true" aria-label="Loading" role="progressbar">
+                        <div class="swing-l"></div>
+                        <div></div>
+                        <div></div>
+                        <div class="swing-r"></div>
                     </div>
-                    <!-- Submit button -->
-                    <input type="submit" value="Submit">
-                </form> 
-            </section>
-            <!-- Output is empty by default. Populate with Javascript -->
-            <section id="calculator">
-                <div class="swing" aria-busy="true" aria-label="Loading" role="progressbar">
-                    <div class="swing-l"></div>
-                    <div></div>
-                    <div></div>
-                    <div class="swing-r"></div>
-                </div>
-                <div id="output"></div>
-            </section>
+                    <div id="output"></div>
+                </section>
+            </div>
         </main>
-        <!-- end main content -->
-        <!-- Footer - copyright info -->
-        <footer>
-            &copy; 2020 Beverley Yeo & MOE2018TRF005
-        </footer>
 
         <!-- Javascript (dependencies) -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script> 
-  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+
         <!-- Javascript (magic) -->
         <script src="parser.js"></script>
-        <script src="../form.js"></script>
+        <script src="form.js"></script>
     </body>
 </html>
