@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    MOE2018TRF005 Research study - Attendance and Payment Check Tool
+    Beverley Yeo, NTU Singapore
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>MOE-TRF Study Payment Calculator</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Consistency on mobile devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSS styles -->
+        <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css"/>
+        <link rel="stylesheet" href="../style.css"/>
+    </head>
+    <body>
+        <!-- Main content -->
+        <main>
+            <section id="information">
+                <h1>
+                    MOE-TRF Study - Payment Calculator
+                </h1>
+                <hr>
+                <h2>
+                    Payment rates (Cycle 3)
+                </h2>
+                <p>
+                    <b>Lessons:</b> $16 each<br>
+                    <b>Pre-test:</b> $10 each<br>
+                    <b>Post-test:</b> $14 each<br>
+                    <b>Focus group discussion:</b> $20
+                </p>
+            </section>
+            <section id="form">
+                <h2>Check your payment amount with your matric number:</h2>
+                <form action="javascript:getData();" id="input">
+                    <label for="matric">Matric number:</label>
+                    <div class="input-wrapper">
+                        <input type="text" placeholder='' value='' class="bar" name="matric" id="matric"/>
+                    </div>
+                    <label for="key">Key:</label>
+                    <div class="input-wrapper">
+                        <input type="text" placeholder='' value='' class="bar" name="key" id="key"/>
+                    </div>
+                    <!-- Submit button -->
+                    <input type="submit" value="Submit">
+                </form> 
+            </section>
+            <!-- Output is empty by default. Populate with Javascript -->
+            <section id="calculator">
+                <div class="swing" aria-busy="true" aria-label="Loading" role="progressbar">
+                    <div class="swing-l"></div>
+                    <div></div>
+                    <div></div>
+                    <div class="swing-r"></div>
+                </div>
+                <div id="output"></div>
+            </section>
+        </main>
+        <!-- end main content -->
+        <!-- Footer - copyright info -->
+        <footer>
+            &copy; 2020 Beverley Yeo & MOE2018TRF005
+        </footer>
+
+        <!-- Javascript (dependencies) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script> 
+  
+        <!-- Javascript (magic) -->
+        <script src="parser.js"></script>
+        <script src="../form.js"></script>
+    </body>
+</html>
