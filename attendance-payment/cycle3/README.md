@@ -1,6 +1,6 @@
 ## Attendance/payment calculator (Cycle 3)
 
-Link: [beverleyy.github.io/moe2018trf005/attendance-payment](http://beverleyy.github.io/moe2018trf005/attendance-payment/cycle3)
+Link: [beverleyy.github.io/moe2018trf005/attendance-payment/cycle3](http://beverleyy.github.io/moe2018trf005/attendance-payment/cycle3)
 
 Parses data from the attendance/payment masterlist based on the entered matriculation number.
 
