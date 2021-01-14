@@ -82,7 +82,7 @@ function generateData(info,outDiv,loader){
     outDiv.innerHTML += "<h3>Total payment due: <b>$" + info.TOTAL + "</b></h3>";
     outDiv.innerHTML += "<p>Please submit your payment claim form by <b>31 January 2021</b>.</p><hr>";
     outDiv.innerHTML += "<p><b>Pre-tests attended:</b> " + info.PreTests + " &times; $12 = $"+(parseInt(info.PreTests)*12)+"</p>";
-    outDiv.innerHTML += "<p><b>Post-tests attended:</b> " + info.PostTests + " &times; $14 = $"+(parseInt(info.PostTests)*14)+"</p>";
+    outDiv.innerHTML += "<p><b>Post-tests attended:</b> " + info.PostTests + " &times; $16 = $"+(parseInt(info.PostTests)*16)+"</p>";
     outDiv.innerHTML += "<p><b>Total no. of lessons attended:</b> " + info.Lessons + " &times; $28 = $"+(parseInt(info.Lessons)*28)+"</p>";
     if(info.FGD == "Y")
         outDiv.innerHTML += "<p><b>Focus group discussion:</b> $20</p>";
