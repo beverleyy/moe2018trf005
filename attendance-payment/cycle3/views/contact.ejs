@@ -1,0 +1,38 @@
+<section id="calculator">
+    <div id="output">
+        <h2>Record for: <%= output.full_name %>, <%= output.matric %></h2>
+        <h3>Total payment due: <b>$<%= output.total %></b></h3>
+        <p>Please submit your payment claim form by <b>31 January 2021</b>.</p><hr>
+        <p><b>Pre-tests attended:</b> <%= output.pretests %> &times; $12 = $<%= (output.pretests*12).toFixed() %></p>
+        <p><b>Post-tests attended:</b> <%= output.posttests %> &times; $16 = $<%= (output.posttests*16).toFixed() %></p>
+        <p><b>Total no. of lessons attended:</b> <%= output.lessons %> &times; $28 = $<%= (output.lessons*28).toFixed() %></p>
+        <% if (output.fgd == "Y"){ %>
+            <p><b>Focus group discussion:</b> $20</p>
+        <% } %>
+        <% if (output.extra) { %>
+            <p><b>Modified payment (see remarks):</b> $<%= output.extra %></p>
+        <% } %>
+        <% if (output.remarks) { %>
+            <p><b>Remarks:</b> <%= output.remarks %></p>
+        <% } %>
+        <hr>
+        <h3>Detailed attendance:</h3>
+        <p>
+            Pre-Test Speaking: <%= output.pre_s %><br>
+            Pre-Test Writing: <%= output.pre_w %><br>
+            Lesson 1: <%= output.lesson1 %><%= ((output.class == "Delta" && output.lesson1 == "N") ? "/A" : "") %><br>
+            Lesson 2: <%= output.lesson2 %><%= ((output.class == "Delta" && output.lesson2 == "N") ? "/A" : "") %><br>
+            Lesson 3: <%= output.lesson3 %><%= ((output.class == "Delta" && output.lesson3 == "N") ? "/A" : "") %><br>
+            Lesson 4: <%= output.lesson4 %><%= ((output.class == "Delta" && output.lesson4 == "N") ? "/A" : "") %><br>
+            Lesson 5: <%= output.lesson5 %><%= ((output.class == "Delta" && output.lesson5 == "N") ? "/A" : "") %><br>
+            Post-Test Speaking: <%= output.post_s %><br>
+            Post-Test Writing: <%= output.post_w %>
+            <% if (output.fgd) { %>
+                <br>Focus Group Discussion: <%= output.fgd %>
+            <% } %>
+        </p>
+        <p>(Y = attended, N = did not attend, N/A = not eligible)</p>
+        <hr>
+        <p>If there is any discrepancy, please email <a href="mailto:MOE2018TRF005@gmail.com">MOE2018TRF005@gmail.com</a>.</p>
+    </div>
+</section>

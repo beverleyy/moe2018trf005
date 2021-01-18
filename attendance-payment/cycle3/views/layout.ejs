@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    MOE2018TRF005 Research study - Attendance and Payment Check Tool
+    Beverley Yeo, NTU Singapore
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>MOE-TRF Study Payment Calculator</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Consistency on mobile devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSS styles -->
+        <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css"/>
+        <link rel="stylesheet" href="/style.css"/>
+    </head>
+    <body>
+        <main class="page">
+            <div class="container">
+                <section id="information">
+                    <h1>MOE-TRF Study</h1>
+                    <h2>Payment Calculator (Cycle 3)</h2>
+                    <div class="rate">
+                        <p>
+                            <b>Lessons:</b> $28 each<br>
+                            <b>Pre-test:</b> $12 each<br>
+                            <b>Post-test:</b> $16 each<br>
+                            <b>Focus group discussion:</b> $20
+                        </p>
+                    </div>
+                    <h3>Check your payment amount:</h3>
+                </section>
+                <section id="form">
+                    <form method="post" class="form" action="/" id="input" novalidate>
+                        <label for="matric">Matric number</label>
+                        <input type="text" placeholder='' value='<%= input.matric %>'name="matric" id="matric"/>
+                        <label for="key">Key</label>
+                        <input type="text" placeholder='' value='<%= input.key %>'name="key" id="key"/>
+                        <input type="submit" id="submit" value="Submit">
+                        <svg viewBox="0 0 320 300">
+                            <defs>
+                                <linearGradient
+                                            inkscape:collect="always"
+                                            id="linearGradient"
+                                            x1="13"
+                                            y1="193.49992"
+                                            x2="307"
+                                            y2="193.49992"
+                                            gradientUnits="userSpaceOnUse">
+                                    <stop
+                                        style="stop-color:#ae967c;"
+                                        offset="0"
+                                        id="stop876" />
+                                    <stop
+                                        style="stop-color:#a09986;"
+                                        offset="1"
+                                        id="stop878" />
+                                </linearGradient>
+                            </defs>
+                            <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
+                        </svg>
+                    </form>
+                </section>
+                <% if (output.matric) { %>
+                    <%- body %> 
+                <% } else if (flag == 1) { %>
+                    <section id="calculator">
+                        <div id="output">
+                            Error: Matric number not found. You are not a registered participant. Please try again or email <a href='mailto:MOE2018TRF005@gmail.com'>MOE2018TRF005@gmail.com</a>.
+                        </div>
+                    </section>
+                <% } else if (flag == 2) { %>
+                    <section id="calculator">
+                        <div id="output">
+                            Error: Failed to retrieve data from file. Please ensure you have entered the correct key. Please email <a href='mailto:MOE2018TRF005@gmail.com'>MOE2018TRF005@gmail.com</a> if the problem persists.
+                        </div>
+                    </section>
+                <% } %>
+                <footer>
+                    &copy; 2020-2021 Beverley Yeo & MOE2018TRF005
+                </footer>
+            </div>
+        </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+        <script src="/form.js"></script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "MOE2018TRF005_Check",
+  "version": "0.3.0",
+  "description": "Attendance and payment calculator for MOE2018TRF005 study",
+  "engines": {
+    "node": "14.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "express-flash": "0.0.2",
+    "express-layout": "^0.1.0",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.9.2",
+    "pg": "^8.1.0"
+  },
+  "devDependencies": {
+    "got": "^11.3.0",
+    "tape": "^4.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beverleyy/moe2018trf005/attendance-payment/cycle3"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
