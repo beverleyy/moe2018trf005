@@ -1,6 +1,6 @@
 ## Attendance/payment calculator (Cycle 3)
 
-Link: [http://moe2018trf005check.herokuapp.com](http://moe2018trf005check.herokuapp.com)
+Link: [https://moe2018trf005check.herokuapp.com](https://moe2018trf005check.herokuapp.com)
 
 Parses data from the attendance/payment masterlist based on the entered matriculation number.
 
