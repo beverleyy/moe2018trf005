@@ -1,4 +1,4 @@
-## Attendance/payment calculator
+## Attendance/payment calculator (Cycle 2)
 
 Link: [beverleyy.github.io/moe2018trf005/attendance-payment](http://beverleyy.github.io/moe2018trf005/attendance-payment)
 
