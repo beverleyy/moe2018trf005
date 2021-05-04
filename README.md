@@ -1,8 +1,7 @@
 # MOE2018TRF005
-Codes written for MOE 2018 TRF 005 research study.
+Attendance/payment checker/calculator webapp for MOE2018TRF005 study.
 
 ## Contents
 
-* Auto-mailer - Python
-* Statistical analysis - MATLAB
-* [Payment calculator](https://beverleyy.github.io/moe2018trf005/attendance-payment) - HTML/CSS/Javascript
+* [Cycle 2](https://beverleyy.github.io/moe2018trf005/attendance-payment) - HTML/CSS/Javascript (No longer working)
+* [Cycle 3](https://moe2018trf005check.herokuapp.com) - NodeJS, ExpressJS, PostgreSQL
